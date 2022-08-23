@@ -8,8 +8,6 @@ export default function SpeechToText() {
     const [message, messageSet] = useState("");
     const {
         transcript,
-        interimTranscript,
-        finalTranscript,
         resetTranscript,
         listening
     } = useSpeechRecognition({
