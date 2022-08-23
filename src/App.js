@@ -1,5 +1,7 @@
-import { Route } from "react-router-dom";
+//import { Route } from "react-router-dom";
 import SearchPage from "./Components/SearchPage";
+import OutcomePage from './Components/OutcomePage';
+import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
 
 function App() {
   return (
@@ -10,10 +12,12 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
     </Routes> */}
+    <Routes>
+      <Route path="outcomepage" element={<OutcomePage />} />
+    </Routes>
   </div>
   );
 }
-
 export default App;
 
 
