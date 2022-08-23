@@ -35,7 +35,15 @@ const SpeechInput = () => {
       <button onClick={startListening}>Start</button>
       <button onClick={SpeechRecognition.abortListening}>Abort</button>
       <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
+      
+      <form>
+        
+        <input type="text" name="searchstring" placeholder={transcript}/>
+        <button type="submit" class="search-button">
+          <img src={process.env.PUBLIC_URL+"/search.png"}/>
+        </button>
+        
+      </form>
     </div>
   );
 };
