@@ -1,0 +1,17 @@
+.SearchButton
+{
+background: transparent;
+border: none;
+
+border-radius: 50%;
+padding:0px;
+
+}
+.SearchImage
+{
+object-fit: cover;
+width: 10em;
+border-radius:50%;
+
+
+}
