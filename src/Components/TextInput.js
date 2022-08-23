@@ -12,22 +12,23 @@ export default function TextInput() {
     console.log(input)
   }
   return (
-    <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField id="standard-basic" label="Standard" variant="standard" onChange={(e)=> {setInput(e.target.value)}}/>
+    <>
+      <Box
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField id="standard-basic" label="Standard" variant="standard" onChange={(e)=> {setInput(e.target.value)}}/>
+      </Box>
       <Button
-        type="submit"
-        fullWidth
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      />
-    </Box>
+      type="submit"
+      variant="contained"
+      color="primary"
+      onClick={handleClick}
+      >search</Button>
+    </>
   );
 }
