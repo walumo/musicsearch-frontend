@@ -2,8 +2,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { Button } from '@mui/material';
-
-
+import { Outlet, Link } from "react-router-dom";
 
 export default function TextInput() {
   const [input, setInput] = useState('')

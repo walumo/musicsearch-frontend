@@ -10,7 +10,6 @@ export default function SearchPage() {
       <Container maxWidth="sm">
         <h1>Etusivu</h1>
         <TextInput/>
-
       </Container>
     </>
   );
