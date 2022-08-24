@@ -14,6 +14,7 @@ function App() {
       <Container maxWidth="sm" className="container text-centered">
       <h1>Musahaku</h1>
       <SpeechInput/>
+      <OutcomePage/>
     
     </Container>
   </div>
