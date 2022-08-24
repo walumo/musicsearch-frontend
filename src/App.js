@@ -15,7 +15,7 @@ function App() {
       <h1>Musahaku</h1>
       <SpeechInput/>
       <OutcomePage/>
-    
+
     </Container>
   </div>
   );
