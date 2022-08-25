@@ -41,8 +41,8 @@ const SpeechInput = () => {
 
 const endi =() => {
   SpeechRecognition.abortListening();
-  axios.post('https://localhost:44326/Api/logger', 
-  {"Artist":"Testi laulaja","Song":"Tää biisi jää soimaan sun päähän","Latitude":"984237","Longitude":"20384"});
+  axios.post('https://localhost:44326/Api/logger',
+  {Artist:"Miikka S",Song:"Tää biisi ei jää soimaan sun päähän",Latitude:"984237",Longitude:"20384"});
 }
 
 
