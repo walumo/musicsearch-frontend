@@ -11,13 +11,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import SongCard from './SongCard';
 
 
 
 
 
 
-const ShowSong = () => {
+const OutcomePage = () => {
 
   const Json = [
     {
@@ -87,98 +88,11 @@ const ShowSong = () => {
 
   const [geniusResults, setGeniusResults] = useState(Json);
   return (
-    <div className="card-centered">
-      <Card sx={{ display: 'flex' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <CardContent sx={{ flex: '1 0 auto' }}>
-            <Typography component="div" variant="h5">
-              {geniusResults[0].ArtistinNimi}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary" component="div">
-              {geniusResults[0].BiisinNimi} <br/>
-              {geniusResults[0].JulkaisuVuosi}
-            </Typography>
-          </CardContent>
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1 }}>
-          <CardMedia
-            component="img"
-            sx={{ width: 151 }}
-            image={geniusResults[0].Image}
-            alt="Album cover"
-          />
-        
-        </Box>
-      </Card>
-
-
-      <Card sx={{ display: 'flex' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <CardContent sx={{ flex: '1 0 auto' }}>
-            <Typography component="div" variant="h5">
-              {geniusResults[1].ArtistinNimi}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary" component="div">
-              {geniusResults[1].BiisinNimi} <br/>
-              {geniusResults[1].JulkaisuVuosi}
-            </Typography>
-          </CardContent>
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', float: 'right', marginLeft: 'auto', pl: 1, pb: 1 }}>
-          <CardMedia
-            component="img"
-            sx={{ width: 151 }}
-            image={geniusResults[1].Image}
-            alt="Album cover"
-        />
-        
-        </Box>
-      </Card>
-
-    
-
-    
-
-
-
-
-
-
-
-
-      {/* <Card sx={{ maxWidth: 345 }}>
-        
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          {geniusResults[0].ArtistinNimi}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-          {geniusResults[0].BiisinNimi} <br/>
-          {geniusResults[0].JulkaisuVuosi}
-          </Typography>
-        </CardContent>
-        <CardMedia
-          component="img"
-          // height="140"
-          sx={{ width: 151 }}
-          image={geniusResults[0].Image}
-          alt="album cover"
-        />
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card> */}
+    <div>
+      {geniusResults.map(result => <SongCard result={result}/>)}
     </div>
-    // <div>
-    //   <h2>{geniusResults[0].ArtistinNimi}</h2>
-    //   <h1>{geniusResults[0].BiisinNimi}</h1>
-    //   <p>{geniusResults[0].JulkaisuVuosi}</p>
-    //   <img src={geniusResults[0].Image}/>
-
-    // </div>
   )
 }
 
 
-export default ShowSong;
+export default OutcomePage;
