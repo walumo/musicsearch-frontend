@@ -18,20 +18,17 @@ const ConnectToBackend = () => {
             } catch (err) {
                 console.error(err);
             }
-      
           };
-          
           fetchData();
         }, []);
 
     const printData = () => {
         try {
-            return "Tulos backendistä: " + backendData.Result[0].Artist;
+            return "Result from backend: " + backendData.Result[0].Artist;
 
         } catch {
-            return "Ei natsannut";
+            return "No result/Loading...";
         }
-        
     }
 
     return (
