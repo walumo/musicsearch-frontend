@@ -39,16 +39,16 @@ const SpeechInput = () => {
 
   var searchString = transcript;
 
-const endi =() => {
-  SpeechRecognition.abortListening();
-  axios.post('https://localhost:44326/Api/logger', 
-  {"Artist":"Testi laulaja","Song":"Tää biisi jää soimaan sun päähän","Latitude":"984237","Longitude":"20384"});
-}
+  const abortListeningAndPost =() => {
+    SpeechRecognition.abortListening();
+    axios.post('https://localhost:44326/Api/logger',
+    {Artist:"Miikka S",Song:"Tää biisi ei jää soimaan sun päähän",Latitude:"984237",Longitude:"20384"});
+  }
 
 
   return (
     <div>
-      
+  
       <form>
         
         <input type="text" name="searchstring" placeholder={transcript}/>
@@ -57,7 +57,7 @@ const endi =() => {
       </form>
 
 
-      <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={endi} onTouchStart={resetAndListen}  onTouchEnd={endi}><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/logoEiTaustaa.png"}/></button>
+      <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={abortListeningAndPost} onTouchStart={resetAndListen}  onTouchEnd={abortListeningAndPost}><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/logoEiTaustaa.png"}/></button>
      
     </div>
   );
