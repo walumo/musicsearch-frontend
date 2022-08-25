@@ -100,7 +100,7 @@ const ShowSong = () => {
             </Typography>
           </CardContent>
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'flex-end', pl: 1, pb: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1 }}>
           <CardMedia
             component="img"
             sx={{ width: 151 }}
@@ -124,7 +124,7 @@ const ShowSong = () => {
             </Typography>
           </CardContent>
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'flex-end', pl: 1, pb: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', float: 'right', marginLeft: 'auto', pl: 1, pb: 1 }}>
           <CardMedia
             component="img"
             sx={{ width: 151 }}
