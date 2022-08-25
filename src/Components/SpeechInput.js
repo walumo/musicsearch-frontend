@@ -2,6 +2,7 @@ import React from 'react';
 import createSpeechServicesPonyfill from 'web-speech-cognitive-services';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import './components.css'
+import axios, { Axios } from 'axios';
 
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
@@ -36,6 +37,15 @@ const SpeechInput = () => {
     startListening()
   }
 
+  var searchString = transcript;
+
+const endi =() => {
+  SpeechRecognition.abortListening();
+  axios.post('https://localhost:44326/Api/logger', 
+  {"Artist":"Testi laulaja","Song":"Tää biisi jää soimaan sun päähän","Latitude":"984237","Longitude":"20384"});
+}
+
+
   return (
     <div>
       
@@ -47,7 +57,7 @@ const SpeechInput = () => {
       </form>
 
 
-      <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={SpeechRecognition.abortListening} onTouchStart={resetAndListen}  onTouchEnd={SpeechRecognition.abortListening} ><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/logoEiTaustaa.png"}/></button>
+      <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={endi} onTouchStart={resetAndListen}  onTouchEnd={endi}><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/logoEiTaustaa.png"}/></button>
      
     </div>
   );
