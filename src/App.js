@@ -6,18 +6,16 @@ import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
 import SpeechInput from "./Components/SpeechInput";
 import Container from '@mui/material/Container';
 import "./app.css";
-import ConnectToBackend from './Components/ConnectToBackend';
+
 
 function App() {
   return (
     <div>
       <Container maxWidth="sm" className="container text-centered">
-      <h1>Musahaku</h1>
-      <SpeechInput/>
-      <OutcomePage/>
-      <ConnectToBackend/>
-
-    </Container>
+        <h1>Musahaku</h1>
+        <SpeechInput/>
+        <OutcomePage/>
+      </Container>
   </div>
   );
 }

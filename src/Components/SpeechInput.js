@@ -3,6 +3,7 @@ import createSpeechServicesPonyfill from 'web-speech-cognitive-services';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import './components.css'
 import axios, { Axios } from 'axios';
+import OutcomePage from './OutcomePage';
 
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
@@ -58,7 +59,7 @@ const SpeechInput = () => {
 
 
       <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={abortListeningAndPost} onTouchStart={resetAndListen}  onTouchEnd={abortListeningAndPost}><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/logoEiTaustaa.png"}/></button>
-     
+      <OutcomePage/>
     </div>
   );
 };
