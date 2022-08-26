@@ -8,6 +8,8 @@ import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 
 const SongCard = ({result}) => {
+    let embedUrl = result.WebPlayerUrl.replace('https://open.spotify.com/track/', 'https://open.spotify.com/embed/track/').concat('?utm_source=generator');
+    
     return (
         <>
             <Card sx={{ display: 'flex' }}>
@@ -30,6 +32,15 @@ const SongCard = ({result}) => {
                     />
                 </Box>
             </Card>
+            <iframe 
+            src={embedUrl} 
+            style={{'borderRadius': '12px'}}
+            width="100%" height="80" 
+            frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy"></iframe>
+            
+
         </>
     )
 
