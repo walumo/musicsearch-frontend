@@ -1,0 +1,5 @@
+Petrol #004A4F
+Verenpunainen #8F1600
+
+Tumma background #2E2E2E
+Vaalea background #e6ecec
