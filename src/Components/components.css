@@ -17,5 +17,27 @@ border-radius:50%;
 }
 
 body{
-    background-image: linear-gradient(to right top, #004a4f, #0a4f53, #135458, #1a5a5c, #215f61, #346b69, #457671, #568279, #759788, #95ac9a, #b4c2ae, #d3d8c5);
+
+    background-image: linear-gradient(to right, #004a4f, #0a4f53, #135458, #1a5a5c, #215f61, #346b69, #457671, #568279, #759788, #95ac9a, #b4c2ae, #d3d8c5);
+
+    -webkit-background-size: cover;
+
+    -moz-background-size: cover;
+
+    -o-background-size: cover;
+
+    background-size: cover;
+
+}
+
+#fade-button{
+    color: white;
+    font: 
+    
+
+}
+
+form{
+    margin-top: 5em;
+    margin-bottom: 2em;
 }
