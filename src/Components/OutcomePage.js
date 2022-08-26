@@ -1,16 +1,5 @@
-import React, { Component } from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import TextInput from './TextInput';
+import React from 'react';
 import {useEffect, useState} from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import SongCard from './SongCard';
 
 const OutcomePage = ({queryString, lat, lon}) => {
@@ -27,11 +16,10 @@ const OutcomePage = ({queryString, lat, lon}) => {
               } catch (err) {
                   console.error(err);
               }
-        
             };
             
             fetchData();
-          }, []);
+          }, [queryString]);
 
         try {
           return (
@@ -42,7 +30,7 @@ const OutcomePage = ({queryString, lat, lon}) => {
 
         } catch {
           return (
-            <>Ei onnaa</>
+            <>SPINNER HERE!!</>
           )
         }
 

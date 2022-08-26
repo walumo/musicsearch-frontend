@@ -20,8 +20,6 @@ SpeechRecognition.applyPolyfill(AzureSpeechRecognition);
 
 const SpeechInput = () => {
 
-  const [searchString, setSearchString] = useState("")
-
   const [coordinates, setCoordinates] = useState({});
 
   useEffect(()=> {
@@ -69,9 +67,7 @@ const SpeechInput = () => {
 
   const abortListeningAndPost =() => {
     SpeechRecognition.abortListening();
-    setSearchString(transcript)
-    console.log(searchString);
-
+    console.log(transcript);
   }
 
   return (
@@ -82,7 +78,7 @@ const SpeechInput = () => {
       </form>
 
       <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={abortListeningAndPost} onTouchStart={resetAndListen}  onTouchEnd={abortListeningAndPost}><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/searchbutton.png"}/></button>
-      <OutcomePage queryString={searchString} lat={coordinates.lat} lon={coordinates.lon}/>
+      <OutcomePage queryString={transcript} lat={coordinates.lat} lon={coordinates.lon}/>
     </div>
   );
 };
