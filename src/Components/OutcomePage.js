@@ -1,6 +1,8 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 import SongCard from './SongCard';
+import { CSSProperties } from "react";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 const OutcomePage = ({queryString, lat, lon}) => {
   const [geniusResults, setGeniusResults] = useState(0);
@@ -30,7 +32,21 @@ const OutcomePage = ({queryString, lat, lon}) => {
 
         } catch {
           return (
-            <>SPINNER HERE!!</>
+            <>
+            <br/>
+            <br/>
+
+            functin App(){
+              let[loading, setLoading] = useState(true);
+              return (
+                <div className="loading">
+                <button onClick={()=> setLoading(!loading)}></button>
+                </div>
+              );
+              }
+
+            <ScaleLoader/>
+            </>
           )
         }
 
