@@ -1,20 +1,39 @@
-import React, { Component } from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import TextInput from './TextInput';
+import React from 'react';
+import {useEffect, useState} from 'react';
+import SongCard from './SongCard';
 
-class OutcomePage extends Component {
-  render() {
-    return (
-        <div>
-          <h2>Song 1</h2>
-          <h2>Song 2</h2>
-          <h2>Song 3</h2>
-          <h2>Song 4</h2>
-          <h2>Song 5</h2>
-        </div>
-    );
-  }
+const OutcomePage = ({queryString, lat, lon}) => {
+  const [geniusResults, setGeniusResults] = useState(0);
+  
+      useEffect(() => {
+          console.log("Query from outcomepage: " +queryString)
+          const axios = require('axios');
+          const fetchData = async () => {
+              try {
+                const result = await axios.get('https://localhost:44326/Api/songs', { params: { q: queryString }});
+                setGeniusResults(result.data);
+  
+              } catch (err) {
+                  console.error(err);
+              }
+            };
+            
+            fetchData();
+          }, [queryString]);
+
+        try {
+          return (
+            <>
+              {geniusResults.Result.map(result => <SongCard key={geniusResults.Result.indexOf(result)} result={result} lat={lat} lon={lon}/>)}
+            </>
+          )
+
+        } catch {
+          return (
+            <>SPINNER HERE!!</>
+          )
+        }
+
 }
+
 export default OutcomePage;
