@@ -2,18 +2,18 @@
 {
 background: transparent;
 border: none;
-
 border-radius: 50%;
 padding:0px;
 
 }
+
 .SearchImage
 {
 object-fit: cover;
 width: 10em;
 border-radius:50%;
-
-
+margin-bottom: 2em;
+box-shadow: 1px 1px 10px black;
 }
 
 body{
@@ -32,12 +32,17 @@ body{
 
 #fade-button{
     color: white;
-    font: 
-    
-
 }
 
 form{
     margin-top: 5em;
     margin-bottom: 2em;
+}
+
+.searchInput{
+    min-width: 75%;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid black;
+    box-shadow: 1px 1px 8px gray;
 }

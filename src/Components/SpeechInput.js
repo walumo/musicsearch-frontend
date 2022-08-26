@@ -27,6 +27,9 @@ const SpeechInput = () => {
   const [coordinates, setCoordinates] = useState({});
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [language, setLanguage] = useState("en-US");
+  const [searchButtonUrl, setSearchButtonUrl] = useState("/resources/searchbutton.png");
+  const [manualInput, setManualInput] = useState("");
+
   useEffect(()=> {
     const options = {
       enableHighAccuracy: true,
@@ -65,41 +68,50 @@ const SpeechInput = () => {
     return null;
   }
   const resetAndListen =() => {
-    
+    setSearchButtonUrl("/resources/recordbutton.png")
+    setManualInput(null)
     resetTranscript()
     startListening()
   }
 
-  const abortListeningAndPost =() => {
+  const abortListening =() => {
+    setSearchButtonUrl("/resources/searchbutton.png")
     SpeechRecognition.abortListening();
     console.log(transcript);
   }
   
   
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   function handleCloseChangeLocale(language){
-      setAnchorEl(null);
+      setAnchorEl("");
       setLanguage(language);
       console.log("changed language to: " +language);
       
   }
+  
+  const handleManualInput = event => {
+    setManualInput(event.target.value);
+    console.log('value is:', event.target.value);
+  };
 
   return (
     <div>
         
       <form>
-        <input type="text" name="searchstring" placeholder={transcript}/>
+        <input onChange={handleManualInput} className='searchInput' type="text" name="searchstring" placeholder={transcript} value={manualInput}/>
       </form>
 
-      <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={abortListeningAndPost} onTouchStart={resetAndListen}  onTouchEnd={abortListeningAndPost}><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/searchbutton.png"}/></button>
-      <OutcomePage queryString={transcript} lat={coordinates.lat} lon={coordinates.lon}/>
+      <button className='SearchButton' onMouseDown={resetAndListen} onMouseUp={abortListening} onTouchStart={resetAndListen}  onTouchEnd={abortListening}><img className='SearchImage' src={process.env.PUBLIC_URL+ searchButtonUrl}/></button>
+      <OutcomePage queryString={manualInput? manualInput : transcript} lat={coordinates.lat} lon={coordinates.lon}/>
       <div>
             <Button
               id="fade-button"
@@ -120,8 +132,8 @@ const SpeechInput = () => {
               onClose={handleClose}
               TransitionComponent={Fade}
             >
-              <MenuItem onClick={()=>handleCloseChangeLocale("en-US")}>english</MenuItem>
-              <MenuItem onClick={()=>handleCloseChangeLocale("fi-FI")}>suomi</MenuItem>
+              <MenuItem onClick={()=>handleCloseChangeLocale("en-US")}>English</MenuItem>
+              <MenuItem onClick={()=>handleCloseChangeLocale("fi-FI")}>Suomi</MenuItem>
               <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Martti</MenuItem>
               
             </Menu>

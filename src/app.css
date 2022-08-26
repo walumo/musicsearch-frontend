@@ -1,11 +1,7 @@
 .container {
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .text-centered {
     text-align: center;
 }
-
-/* .card-centered {
-    align-items: ;
-} */
