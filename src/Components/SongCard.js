@@ -12,6 +12,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import './components.css'
 
 // axios.post('https://localhost:44326/Api/logger',
 // {Artist:{result.Artist},Song:{result.Track},Latitude:{lat},Longitude:{lon}});
