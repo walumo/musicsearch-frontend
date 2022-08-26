@@ -13,10 +13,11 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 
+// axios.post('https://localhost:44326/Api/logger',
+// {Artist:{result.Artist},Song:{result.Track},Latitude:{lat},Longitude:{lon}});
 
 
-
-const SongCard = ({result}) => {
+const SongCard = ({result, lat, lon}) => {
     let embedUrl = result.WebPlayerUrl.replace('https://open.spotify.com/track/', 'https://open.spotify.com/embed/track/').concat('?utm_source=generator');
     
     return (
@@ -42,7 +43,7 @@ const SongCard = ({result}) => {
                             src={embedUrl} 
                             style={{'borderRadius': '12px'}}
                             width="100%" height="80" 
-                            frameBorder="0" allowfullscreen=""
+                            frameBorder="0" allowFullScreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                             loading="lazy"></iframe>
                         </AccordionDetails>
@@ -56,41 +57,10 @@ const SongCard = ({result}) => {
                         image={result.Image}
                         alt="Album cover"
                     />
-                
                 </Box>
             </Card>
-
-            <Accordion>
-                {/* <svg playCircle="PlayCircleIcon"></svg> */}
-                
-                <AccordionSummary
-                    // playArrowIcon={<PlayArrowIcon />}
-                    // expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                >
-                    
-                <Typography>
-                    {/* Click here to listen */}
-                    
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <iframe 
-                    src={embedUrl} 
-                    style={{'borderRadius': '12px'}}
-                    width="100%" height="80" 
-                    frameBorder="0" allowfullscreen=""
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                    loading="lazy"></iframe>
-                </AccordionDetails>
-            </Accordion>
-
-            
-
         </>
     )
-
 }
 
 export default SongCard;

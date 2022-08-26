@@ -20,7 +20,9 @@ SpeechRecognition.applyPolyfill(AzureSpeechRecognition);
 
 const SpeechInput = () => {
 
-  let crd; //variable for coordinates
+  const [searchString, setSearchString] = useState("")
+
+  const [coordinates, setCoordinates] = useState({});
 
   useEffect(()=> {
     const options = {
@@ -30,9 +32,10 @@ const SpeechInput = () => {
     };
     
     function success(pos) {
-      crd = pos.coords;
+      let crd = pos.coords;
       console.log(crd.latitude)
       console.log(crd.longitude)
+      setCoordinates({"lat":crd.latitude, "lon": crd.longitude})
     }
     
     function error(err) {
@@ -64,28 +67,22 @@ const SpeechInput = () => {
     startListening()
   }
 
-  var searchString = transcript;
-
   const abortListeningAndPost =() => {
     SpeechRecognition.abortListening();
-    axios.post('https://localhost:44326/Api/logger',
-    {Artist:"Miikka S",Song:"Tää biisi ei jää soimaan sun päähän",Latitude:"984237",Longitude:"20384"});
-  }
+    setSearchString(transcript)
+    console.log(searchString);
 
+  }
 
   return (
     <div>
   
       <form>
-        
         <input type="text" name="searchstring" placeholder={transcript}/>
-       
-        
       </form>
 
-
       <button className='SearchButton'  onMouseDown={resetAndListen} onMouseUp={abortListeningAndPost} onTouchStart={resetAndListen}  onTouchEnd={abortListeningAndPost}><img className='SearchImage' src={process.env.PUBLIC_URL+"/resources/searchbutton.png"}/></button>
-      <OutcomePage/>
+      <OutcomePage queryString={searchString} lat={coordinates.lat} lon={coordinates.lon}/>
     </div>
   );
 };

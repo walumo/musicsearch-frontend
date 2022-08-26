@@ -13,17 +13,16 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import SongCard from './SongCard';
 
-const OutcomePage = () => {
+const OutcomePage = ({queryString, lat, lon}) => {
   const [geniusResults, setGeniusResults] = useState(0);
-      
+  
       useEffect(() => {
+          console.log("Query from outcomepage: " +queryString)
           const axios = require('axios');
           const fetchData = async () => {
               try {
-                  const result = await axios.get(
-                  'https://localhost:44326/Api/songs?q=thriller', 
-                  );
-                  setGeniusResults(result.data);
+                const result = await axios.get('https://localhost:44326/Api/songs', { params: { q: queryString }});
+                setGeniusResults(result.data);
   
               } catch (err) {
                   console.error(err);
@@ -37,7 +36,7 @@ const OutcomePage = () => {
         try {
           return (
             <>
-              {geniusResults.Result.map(result => <SongCard key={geniusResults.Result.indexOf(result)} result={result}/>)}
+              {geniusResults.Result.map(result => <SongCard key={geniusResults.Result.indexOf(result)} result={result} lat={lat} lon={lon}/>)}
             </>
           )
 
