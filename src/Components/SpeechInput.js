@@ -9,8 +9,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { ScaleLoader } from 'react-spinners';
 
-
-
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
 
@@ -111,7 +109,7 @@ const SpeechInput = () => {
       try {
         setGeniusResults([]);
           setLoading(true);
-          const result = await axios.get('https://localhost:44326/Api/songs', { params: { q: queryString }});
+          const result = await axios.get('https://verse-api.azurewebsites.net/Api/songs', { params: { q: queryString }});
           setGeniusResults(result.data);
           setLoading(false);
       } catch (err) {
@@ -167,7 +165,6 @@ const SpeechInput = () => {
           </div>
     </div>
   );
-
   
 };
 export default SpeechInput;

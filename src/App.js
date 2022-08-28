@@ -1,8 +1,6 @@
 import SpeechInput from "./Components/SpeechInput";
 import Container from '@mui/material/Container';
 import "./app.css";
-import { useEffect } from "react";
-
 
 function App() {
 
@@ -15,5 +13,3 @@ function App() {
   );
 }
 export default App;
-
-

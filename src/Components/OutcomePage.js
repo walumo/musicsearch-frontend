@@ -1,5 +1,4 @@
 import React from 'react';
-import {useEffect, useState} from 'react';
 import SongCard from './SongCard';
 
 const OutcomePage = ({geniusResults, lat, lon}) => {
