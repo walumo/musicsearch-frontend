@@ -1,14 +1,19 @@
 .SearchButton
 {
+position: relative;
+z-index: 2;
 background: transparent;
 border: none;
 border-radius: 50%;
-padding:0px;
+padding:0px;    
 
 }
 
 .SearchImage
 {
+pointer-events: none;
+position: relative;
+z-index: 1;
 object-fit: cover;
 width: 10em;
 border-radius:50%;

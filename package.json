@@ -17,6 +17,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-speech-recognition": "^3.9.1",
+    "react-spinners": "^0.13.4",
     "web-speech-cognitive-services": "^7.1.2-master.1a5108f",
     "web-vitals": "^2.1.4"
   },

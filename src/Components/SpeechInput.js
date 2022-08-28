@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import createSpeechServicesPonyfill from 'web-speech-cognitive-services';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import './components.css'
-import axios, { Axios } from 'axios';
 import OutcomePage from './OutcomePage';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+import { ScaleLoader } from 'react-spinners';
 
 
 
@@ -20,17 +20,23 @@ const { SpeechRecognition: AzureSpeechRecognition } = createSpeechServicesPonyfi
     subscriptionKey: SUBSCRIPTION_KEY,
   }
 });
+
 SpeechRecognition.applyPolyfill(AzureSpeechRecognition);
 
 const SpeechInput = () => {
 
+  const axios = require('axios');
   const [coordinates, setCoordinates] = useState({});
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [language, setLanguage] = useState("en-US");
   const [searchButtonUrl, setSearchButtonUrl] = useState("/resources/searchbutton.png");
-  const [manualInput, setManualInput] = useState("");
+  const [geniusResults, setGeniusResults] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   useEffect(()=> {
+
+    SpeechRecognition.abortListening();
+
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -47,11 +53,11 @@ const SpeechInput = () => {
     function error(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
-    
+
     navigator.geolocation.getCurrentPosition(success, error, options);
-  
+    navigator.mediaDevices.getUserMedia({audio: true, video: false})
   },[])
-  
+
   const {
     transcript,
     resetTranscript,
@@ -59,6 +65,7 @@ const SpeechInput = () => {
   } = useSpeechRecognition();
 
   console.log(transcript)
+
   const startListening = () => SpeechRecognition.startListening({
     continuous: true,
     language: language
@@ -67,22 +74,24 @@ const SpeechInput = () => {
   if (!browserSupportsSpeechRecognition) {
     return null;
   }
+
+  //Reset transcript, change button red and start listening
   const resetAndListen =() => {
     setSearchButtonUrl("/resources/recordbutton.png")
-    setManualInput(null)
     resetTranscript()
     startListening()
   }
 
+  //Stop listening, change button to default and call API with transcript value
   const abortListening =() => {
     setSearchButtonUrl("/resources/searchbutton.png")
     SpeechRecognition.abortListening();
-    console.log(transcript);
+    fetchData(transcript);
+    console.log("Calling verse-api with: " +transcript);
   }
   
-  
+  //Handlers for locale options
   const open = Boolean(anchorEl);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -95,33 +104,52 @@ const SpeechInput = () => {
       setAnchorEl("");
       setLanguage(language);
       console.log("changed language to: " +language);
-      
   }
-  
-  const handleManualInput = event => {
-    setManualInput(event.target.value);
-    console.log('value is:', event.target.value);
-  };
 
+  //Get data from API when user lifts from search button
+  const fetchData = async (queryString) => {
+      try {
+        setGeniusResults([]);
+          setLoading(true);
+          const result = await axios.get('https://localhost:44326/Api/songs', { params: { q: queryString }});
+          setGeniusResults(result.data);
+          setLoading(false);
+      } catch (err) {
+          console.error(err);
+      }
+    };
+    
   return (
     <div>
         
       <form>
-        <input onChange={handleManualInput} className='searchInput' type="text" name="searchstring" placeholder={transcript} value={manualInput}/>
+        <input className='searchInput' type="text" name="searchstring" value={transcript} readOnly/>
       </form>
+      
+      <button className='SearchButton' 
+        onMouseDown={resetAndListen} 
+        onMouseUp={abortListening} 
+        onTouchStart={resetAndListen} 
+        onTouchEnd={abortListening}> 
+          <img className='SearchImage'alt="Searchbutton" src={process.env.PUBLIC_URL+ searchButtonUrl} />
+      </button>
 
-      <button className='SearchButton' onMouseDown={resetAndListen} onMouseUp={abortListening} onTouchStart={resetAndListen}  onTouchEnd={abortListening}><img className='SearchImage' src={process.env.PUBLIC_URL+ searchButtonUrl}/></button>
-      <OutcomePage queryString={manualInput? manualInput : transcript} lat={coordinates.lat} lon={coordinates.lon}/>
+      <ScaleLoader color="#ffffff" loading={loading} size={150} />
+      
+      <OutcomePage geniusResults={geniusResults} lat={coordinates.lat} lon={coordinates.lon}/>
+      
       <div>
             <Button
               id="fade-button"
               aria-controls={open ? 'fade-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick}
-            >
+              onClick={handleClick}>
+
               {language}
+
             </Button>
+            
             <Menu
               id="fade-menu"
               MenuListProps={{
@@ -130,12 +158,11 @@ const SpeechInput = () => {
               anchorEl={anchorEl}
               open={open}
               onClose={handleClose}
-              TransitionComponent={Fade}
-            >
+              TransitionComponent={Fade}>
+
               <MenuItem onClick={()=>handleCloseChangeLocale("en-US")}>English</MenuItem>
               <MenuItem onClick={()=>handleCloseChangeLocale("fi-FI")}>Suomi</MenuItem>
               <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Martti</MenuItem>
-              
             </Menu>
           </div>
     </div>
