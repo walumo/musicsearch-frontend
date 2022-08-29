@@ -59,10 +59,11 @@ const SpeechInput = () => {
   const {
     transcript,
     resetTranscript,
-    browserSupportsSpeechRecognition
+    browserSupportsSpeechRecognition,
+    listening
   } = useSpeechRecognition();
 
-  console.log(transcript)
+  // console.log(transcript)
 
   const startListening = () => SpeechRecognition.startListening({
     continuous: true,
@@ -119,16 +120,18 @@ const SpeechInput = () => {
     
   return (
     <div>
-        
+      {console.log(listening? "Listening" : "Not listening")}
       <form>
         <input className='searchInput' type="text" name="searchstring" value={transcript} readOnly/>
       </form>
       
-      <button className='SearchButton' 
-        onMouseDown={resetAndListen} 
-        onMouseUp={abortListening} 
-        onTouchStart={resetAndListen} 
-        onTouchEnd={abortListening}> 
+      <button className='SearchButton'
+        onClick={listening? abortListening : resetAndListen } 
+        // onMouseDown={resetAndListen} 
+        // onMouseUp={abortListening} 
+        // onTouchStart={resetAndListen} 
+        // onTouchEnd={abortListening}
+        > 
           <img className='SearchImage'alt="Searchbutton" src={process.env.PUBLIC_URL+ searchButtonUrl} />
       </button>
 
