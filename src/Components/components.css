@@ -55,6 +55,7 @@ form{
     background: transparent;
     border: none;
     outline: none;
+    flex-grow: 1;
 }
 
 .searchInput:focus{
@@ -62,6 +63,8 @@ form{
     background: transparent;
     border: none;
     outline: none;
+    flex-grow: 1;
+
 }
 
 .inputFieldWrapper{
