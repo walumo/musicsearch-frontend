@@ -27,7 +27,9 @@ const SpotifyTest = ({embedUrl}) => (
 )
 
 const SongCard = ({result, lat, lon}) => {
-    let embedUrl = result.WebPlayerUrl.replace('https://open.spotify.com/track/', 'https://open.spotify.com/embed/track/').concat('?utm_source=generator');
+    let embedUrl = result.WebPlayerUrl
+    .replace('https://open.spotify.com/track/', 'https://open.spotify.com/embed/track/')
+    .concat('?utm_source=generator');
     const [showResults, setShowResults] = useState(false)
     console.log(embedUrl)
 
@@ -35,27 +37,31 @@ const SongCard = ({result, lat, lon}) => {
         <>
             <Card sx={{ }} >
                 <CardContent>
-                    <Box sx={{display: 'flex', flexDirecrtion: 'column', justifyContent: 'space-between' }}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'center', width: 1  }}>
-                            <CardContent sx={{ flex: '1 0 auto'}}>
+                    <Box sx={{display: 'flex', flexDirecrtion: 'column' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'center', width: 1 }}>
+                            <CardContent id="contentBox" sx={{ flex: '1 0 auto'}}>
                                 <Typography component="div" variant="h5">
                                 {result.Artist}
                                 </Typography>
                                 <Typography variant="subtitle1" color="text.secondary" component="div">
                                 {result.Track}
                                 </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                {result.ReleaseYear}
+                                </Typography>
                                 
-                                  <CardActionArea >
+                                <CardActionArea sx={{ bottom: 0 }}>
                                   <img className='SpotifyLogo' alt='spotifyLogo' src={process.env.PUBLIC_URL+ '/Resources/spotifyLogo.jpg'} width={'50'} onClick={() => setShowResults(!showResults)} ></img>
-                                  </CardActionArea>
+                                </CardActionArea>
                                   
                             </CardContent>   
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', marginLeft: 'auto', pl: 1, pb: 1 }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <CardMedia
+                                    id="coverImage"
                                     component="img"
-                                    sx={{ width: 151, borderRadius: '2px' }}
+                                    sx={{ borderRadius: '2px' }}
                                     image={result.Image}
                                     alt="Album cover"
                                     
