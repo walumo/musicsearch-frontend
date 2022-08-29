@@ -84,7 +84,6 @@ const SpeechInput = () => {
   const abortListening =() => {
     setSearchButtonUrl("/resources/searchbutton.png")
     SpeechRecognition.abortListening();
-    //fetchData("rakkauden rock");
     fetchData(transcript);
     console.log("Calling verse-api with: " +transcript);
   }
