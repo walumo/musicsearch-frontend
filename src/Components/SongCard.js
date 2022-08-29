@@ -8,6 +8,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import './components.css'
+import { CardActions } from '@mui/material';
 
 const SongCard = ({result, lat, lon}) => {
     let embedUrl = result.WebPlayerUrl.replace('https://open.spotify.com/track/', 'https://open.spotify.com/embed/track/').concat('?utm_source=generator');
@@ -15,6 +16,7 @@ const SongCard = ({result, lat, lon}) => {
     return (
         <>
             <Card sx={{ display: 'flex' }}>
+         <CardContent>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography component="div" variant="h5">
@@ -23,8 +25,25 @@ const SongCard = ({result, lat, lon}) => {
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                         {result.Track}
                         </Typography>
+                    </CardContent>
                     
-                    <Accordion>
+                   
+                    
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1 }}>
+                    
+                    <CardMedia
+                        component="img"
+                        sx={{ width: 151 }}
+                        image={result.Image}
+                        alt="Album cover"
+                    />
+                    </Box>
+      
+           
+                
+               
+                     <Accordion>
                         <AccordionSummary>
                             <PlayCircleIcon/>
                             {/* aria-controls="panel1a-content"
@@ -40,16 +59,8 @@ const SongCard = ({result, lat, lon}) => {
                             loading="lazy"></iframe>
                         </AccordionDetails>
                     </Accordion>
+               
                     </CardContent>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1 }}>
-                    <CardMedia
-                        component="img"
-                        sx={{ width: 151 }}
-                        image={result.Image}
-                        alt="Album cover"
-                    />
-                </Box>
             </Card>
         </>
     )
