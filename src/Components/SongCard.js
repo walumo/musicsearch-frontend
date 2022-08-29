@@ -15,34 +15,36 @@ const SongCard = ({result, lat, lon}) => {
     
     return (
         <>
-            <Card sx={{ display: 'flex' }}>
+            <Card sx={{ }} >
          <CardContent>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <CardContent sx={{ flex: '1 0 auto' }}>
+               <Box sx={{display: 'flex', flexDirecrtion: 'column', justifyContent: 'space-between' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'center' }}>
+                    <CardContent sx={{ flex: '1 0 auto',marginRight:'auto' }}>
                         <Typography component="div" variant="h5">
                         {result.Artist}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                         {result.Track}
                         </Typography>
+                    
                     </CardContent>
                     
-                   
-                    
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1 }}>
-                    
+                <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', marginLeft: 'auto', pl: 1, pb: 1 }}>
+                    <CardContent sx={{ flex: '1 0 auto' }}>
                     <CardMedia
                         component="img"
                         sx={{ width: 151 }}
                         image={result.Image}
                         alt="Album cover"
-                    />
-                    </Box>
+                        />
+                    </CardContent>
+                </Box>
+                </Box>
       
            
                 
-               
+               <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1 }}>
                      <Accordion>
                         <AccordionSummary>
                             <PlayCircleIcon/>
@@ -60,6 +62,7 @@ const SongCard = ({result, lat, lon}) => {
                         </AccordionDetails>
                     </Accordion>
                
+                </Box>
                     </CardContent>
             </Card>
         </>
