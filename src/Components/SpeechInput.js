@@ -59,7 +59,8 @@ const SpeechInput = () => {
   const {
     transcript,
     resetTranscript,
-    browserSupportsSpeechRecognition
+    browserSupportsSpeechRecognition,
+    listening
   } = useSpeechRecognition();
 
   console.log(transcript)
@@ -73,12 +74,25 @@ const SpeechInput = () => {
     return null;
   }
 
+
+
   //Reset transcript, change button red and start listening
   const resetAndListen =() => {
     setSearchButtonUrl("/resources/recordbutton.png")
     resetTranscript()
     startListening()
   }
+
+  
+const [disable, setDisable] = useState(false);
+function startListening() {
+  
+    setDisable(true)
+    setTimeout(()=> {setDisable(false)}, 1000);
+  
+}
+
+
 
   //Stop listening, change button to default and call API with transcript value
   const abortListening =() => {
@@ -127,6 +141,7 @@ const SpeechInput = () => {
       <button className='SearchButton' 
         onMouseDown={resetAndListen} 
         onMouseUp={abortListening} 
+        onClick={() => SpeechRecognition.abortListening()}
         onTouchStart={resetAndListen} 
         onTouchEnd={abortListening}> 
           <img className='SearchImage'alt="Searchbutton" src={process.env.PUBLIC_URL+ searchButtonUrl} />
