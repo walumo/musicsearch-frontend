@@ -6,7 +6,11 @@ background: transparent;
 border: none;
 border-radius: 50%;
 padding:0px;    
+}
 
+.magnifierGlassImage{
+    background: transparent;
+    border: none;
 }
 
 .SearchImage
@@ -50,4 +54,9 @@ form{
     border-radius: 0.5em;
     border: 1px solid black;
     box-shadow: 1px 1px 8px gray;
+}
+
+.inputFieldWrapper{
+    display: flex;
+    flex-direction: row;
 }

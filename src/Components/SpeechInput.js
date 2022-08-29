@@ -30,6 +30,7 @@ const SpeechInput = () => {
   const [searchButtonUrl, setSearchButtonUrl] = useState("/resources/searchbutton.png");
   const [geniusResults, setGeniusResults] = useState(0);
   const [loading, setLoading] = useState(false)
+  const [manualInput, setManualInput] = useState("");
 
   useEffect(()=> {
 
@@ -79,6 +80,7 @@ const SpeechInput = () => {
     setSearchButtonUrl("/resources/recordbutton.png")
     resetTranscript()
     startListening()
+    {console.log(listening? "Listening" : "Not listening")}
   }
 
   //Stop listening, change button to default and call API with transcript value
@@ -87,6 +89,7 @@ const SpeechInput = () => {
     SpeechRecognition.abortListening();
     fetchData(transcript);
     console.log("Calling verse-api with: " +transcript);
+    {console.log(listening? "Listening" : "Not listening")}
   }
   
   //Handlers for locale options
@@ -105,6 +108,17 @@ const SpeechInput = () => {
       console.log("changed language to: " +language);
   }
 
+  const handleManualInput = (event) => {
+    setManualInput(event.target.value)
+    console.log(manualInput)
+  }
+
+  const handleManualInputFetchData = (input) => {
+    fetchData(input);
+    setManualInput("");
+    resetTranscript();
+  }
+
   //Get data from API when user lifts from search button
   const fetchData = async (queryString) => {
       try {
@@ -120,18 +134,14 @@ const SpeechInput = () => {
     
   return (
     <div>
-      {console.log(listening? "Listening" : "Not listening")}
-      <form>
-        <input className='searchInput' type="text" name="searchstring" value={transcript} readOnly/>
-      </form>
+      <div className='inputFieldWrapper'>
+        <input onChange={handleManualInput} className='searchInput' type="text" name="searchstring" placeholder={transcript} value={manualInput} />
+        <button className='magnifierGlassImage' onClick={()=>handleManualInputFetchData(manualInput)}>
+          <img alt="Magnifier glass" src={process.env.PUBLIC_URL+ "/resources/magnifierGlass.png"}/>
+        </button>
+      </div>
       
-      <button className='SearchButton'
-        onClick={listening? abortListening : resetAndListen } 
-        // onMouseDown={resetAndListen} 
-        // onMouseUp={abortListening} 
-        // onTouchStart={resetAndListen} 
-        // onTouchEnd={abortListening}
-        > 
+      <button className='SearchButton' onClick={listening? abortListening : resetAndListen }> 
           <img className='SearchImage'alt="Searchbutton" src={process.env.PUBLIC_URL+ searchButtonUrl} />
       </button>
 
