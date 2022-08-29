@@ -51,30 +51,38 @@ form{
 }
 
 .searchInput{
-    min-width: 90%;
     padding: 0.5em;
     background: transparent;
     border: none;
     outline: none;
+    flex-grow: 1;
 }
 
 .searchInput:focus{
-    min-width: 90%;
     padding: 0.5em;
     background: transparent;
     border: none;
     outline: none;
+    flex-grow: 1;
+
 }
 
 .inputFieldWrapper{
     display: flex;
     flex-direction: row;
-    justify-items: flex-end;
+    justify-content: space-between;
+    /* justify-items: flex-end; */
     height: 2em;
     max-width: 100%;
     text-align: center;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #d3d8c5;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 5px;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 /* .card{
