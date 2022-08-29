@@ -17,7 +17,7 @@ const SpotifyTest = ({embedUrl}) => (
     <>
     <iframe 
         src={embedUrl} 
-        style={{'borderRadius': '12px'}}
+        style={{'borderRadius': '12px' }}
         width="100%" height="80" 
         frameBorder="0" allowFullScreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
@@ -55,16 +55,17 @@ const SongCard = ({result, lat, lon}) => {
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <CardMedia
                                     component="img"
-                                    sx={{ width: 151 }}
+                                    sx={{ width: 151, borderRadius: '2px' }}
                                     image={result.Image}
                                     alt="Album cover"
+                                    
                                 />
                             </CardContent>
                         </Box>
                     </Box>
         
                     <div sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1, width:1 }}>
-                        <CardContent>
+                        <CardContent sx={{padding: 0 }}>
                                 { showResults ? <SpotifyTest embedUrl={embedUrl}/> : null }
                         </CardContent>
                     </div>
