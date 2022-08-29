@@ -8,6 +8,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { ScaleLoader } from 'react-spinners';
+import SearchIcon from '@mui/icons-material/Search';
 
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
@@ -136,8 +137,8 @@ const SpeechInput = () => {
     <div>
       <div className='inputFieldWrapper'>
         <input onChange={handleManualInput} className='searchInput' type="text" name="searchstring" placeholder={transcript} value={manualInput} />
-        <button className='magnifierGlassImage' onClick={()=>handleManualInputFetchData(manualInput)}>
-          <img alt="Magnifier glass" src={process.env.PUBLIC_URL+ "/resources/magnifierGlass.png"}/>
+        <button className='magnifierGlassButton' onClick={()=>handleManualInputFetchData(manualInput)}>
+          <SearchIcon />
         </button>
       </div>
       
