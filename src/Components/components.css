@@ -44,6 +44,18 @@ body{
 
 }
 
+.DialogBox{
+    background-color: #d3d8c5;
+    color: black;
+}
+#TextColorBlack{
+    color: black;
+}
+
+#TextColorPetrol{
+    color: #004a4f;
+}
+
 #fade-button{
     color: white;
 }
@@ -101,3 +113,17 @@ form{
     margin-bottom: 2em;
 }
 
+.embedPlayerClass{
+    background-color: ghostwhite;
+}
+
+.spotifyNotFound{
+    background-color: ghostwhite;
+    height: 80px;
+    border-radius: 0em 0em 8px 8px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(128, 128, 128);
+    font-size: large;
+}
