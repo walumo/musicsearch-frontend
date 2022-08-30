@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { ScaleLoader } from 'react-spinners';
 import SearchIcon from '@mui/icons-material/Search';
+import InfoDialog from './InfoDialog';
 
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
@@ -126,6 +127,10 @@ const SpeechInput = () => {
         setGeniusResults([]);
           setLoading(true);
           const result = await axios.get('https://verse-api.azurewebsites.net/Api/songs', { params: { q: queryString }});
+          if (result.data.Result.length == 0){
+            window.alert('Improve your searching skills and come back')
+            //<InfoDialog title='fail' description='Your search didnt found anything' buttonText=''/>
+          }
           setGeniusResults(result.data);
           setLoading(false);
       } catch (err) {

@@ -13,6 +13,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import './components.css'
+import { lineHeight } from '@mui/system';
 
 
 
@@ -21,15 +23,9 @@ const Footer = () => {
   const [value, setValue] = React.useState(0);
   return (
 
-      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-        <BottomNavigation
-          showLabels
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        >
-          <InfoDialog/>
+      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, height: '35px' }} elevation={3}>
+        <BottomNavigation sx={{bgcolor: '#d3d8c5'}} showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }} >
+          <InfoDialog title='About Verse' description='Verse is a great app greated by great minds. Great!' buttonText='INFO'/>
           {/* <BottomNavigationAction label="Info" icon={<InfoIcon />} />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} /> */}

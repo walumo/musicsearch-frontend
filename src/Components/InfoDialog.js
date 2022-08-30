@@ -6,8 +6,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import './components.css'
 
-const InfoDialog = () => { 
+
+const InfoDialog = ({title, description, buttonText}) => { 
+
+
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {setOpen(true);};
@@ -16,18 +20,18 @@ const InfoDialog = () => {
    
     return (
     <div>
-        <Button color="secondary" onClick={handleClickOpen}>
+        <Button id='TextColorPetrol' color= "secondary" onClick={handleClickOpen}>
             <HelpOutlineIcon/> 
-            &nbsp;&nbsp;INFO
+            &nbsp;&nbsp;{buttonText}
             
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-        <DialogTitle id="alert-dialog-title">{"About Verse"}</DialogTitle>
-        <DialogContent>
-            <DialogContentText id="alert-dialog-description">Tähän nääs infoa</DialogContentText>
+        <DialogTitle className='DialogBox' id="alert-dialog-title">{title}</DialogTitle>
+        <DialogContent className='DialogBox'>
+            <DialogContentText id="alert-dialog-description">{description}</DialogContentText>
         </DialogContent>
-        <DialogActions>
-            <Button onClick={handleClose} autoFocus>Ok</Button>
+        <DialogActions className='DialogBox'>
+            <Button id='TextColorBlack' onClick={handleClose} autoFocus>ok</Button>
         </DialogActions>
         </Dialog>
     </div>
