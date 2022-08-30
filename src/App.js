@@ -1,7 +1,6 @@
 import SpeechInput from "./Components/SpeechInput";
 import Container from '@mui/material/Container';
 import "./app.css";
-import AlertDialog from "./Components/InfoDialog";
 
 function App() {
 
@@ -11,7 +10,9 @@ function App() {
         <SpeechInput/>
         <AlertDialog/>
       </Container>
+
   </div>
+
   );
 }
 export default App;

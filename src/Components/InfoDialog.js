@@ -18,6 +18,50 @@ export default function AlertDialog() {
     setOpen(false);
   };
 
+
+  return (
+    <div>
+      <Button onClick={handleClickOpen}>
+        <HelpOutlineIcon/>
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"About Verse"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Tähän nääs infoa
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
+
+
+
+export default function AlertError() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   return (
     <div>
       <Button onClick={handleClickOpen}>
