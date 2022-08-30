@@ -55,16 +55,16 @@ const SongCard = ({result, lat, lon}) => {
             paddingBottom: 0
           }
         }}>
-                        <Box sx={{display: 'flex', flexDirection: 'row' }}>
-                            <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'center', width: 1 }}>
-                                <CardContent id="contentBox" sx={{ flex: '1 0 auto'}}>
-                                    <Typography component="div" variant="h5">
+                        <Box sx={{display: 'flex', flexDirection: 'row', textAlign:"start"}}>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'start', width: 1 }}>
+                                <CardContent id="contentBox" sx={{ flex: '1 0 auto', paddingLeft: '5em', paddingTop: '2em'}}>
+                                    <Typography component="div" variant="h4">
                                     {result.Artist}
                                     </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    <Typography variant="h6" color="text.secondary" component="div">
                                     {result.Track}
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
+                                    <Typography variant="h6" color="text.secondary">
                                     {result.ReleaseYear}
                                     </Typography>
                                     
