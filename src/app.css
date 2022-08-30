@@ -5,3 +5,27 @@
 .text-centered {
     text-align: center;
 }
+
+.SpotifyLogo{
+    width: 20;
+    height: auto;
+}
+
+#coverImage {
+    width: 151px;
+}
+
+@media only screen and (max-device-width: 600px) {
+    #coverImage {
+        width: 100px;
+    }
+    
+    #contentBox {
+        padding: 16px 0px 24px 0px;
+    }
+
+    html
+     {
+        font-size: 10px;
+    }
+}
