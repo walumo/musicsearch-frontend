@@ -1,21 +1,93 @@
 .SearchButton
 {
+position: relative;
+z-index: 2;
 background: transparent;
 border: none;
-
 border-radius: 50%;
-padding:0px;
-
+padding:0px;    
 }
+
+.magnifierGlassButton{
+    background: transparent;
+    border: none;
+    width: 10%;
+}
+
+
 .SearchImage
 {
+pointer-events: none;
+position: relative;
+z-index: 1;
 object-fit: cover;
 width: 10em;
-border-radius:50%;
-
-
+/* border-radius:50%; */
+margin-bottom: 2em;
+filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.484));
+            width:200px;
+            height:200px;
+/* box-shadow: 1px 1px 10px black; */
 }
 
 body{
-    background-image: linear-gradient(to right top, #004a4f, #0a4f53, #135458, #1a5a5c, #215f61, #346b69, #457671, #568279, #759788, #95ac9a, #b4c2ae, #d3d8c5);
+
+    background-image: linear-gradient(to right, #004a4f, #0a4f53, #135458, #1a5a5c, #215f61, #346b69, #457671, #568279, #759788, #95ac9a, #b4c2ae, #d3d8c5);
+
+    -webkit-background-size: cover;
+
+    -moz-background-size: cover;
+
+    -o-background-size: cover;
+
+    background-size: cover;
+
+}
+
+#fade-button{
+    color: white;
+}
+
+form{
+    margin-top: 5em;
+    margin-bottom: 2em;
+}
+
+.searchInput{
+    padding: 0.5em;
+    background: transparent;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+
+
+}
+
+.searchInput:focus{
+    padding: 0.5em;
+    background: transparent;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+
+}
+
+.inputFieldWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* justify-items: flex-end; */
+    height: 2em;
+    max-width: 100%;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #d3d8c5;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 5px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+
 }
