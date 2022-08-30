@@ -3,15 +3,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import './components.css'
-import { CardActionArea, CardActions } from '@mui/material';
-import * as ReactDOM from 'react-dom';
-import React, { useState } from 'react';
-import { width } from '@mui/system';
+import React from 'react';
 
 
 
@@ -20,7 +13,7 @@ const SpotifyTest = ({embedUrl}) => (
     <>
     <iframe 
         className='embedPlayerClass'
-        id="embedPlayer"
+        title='spotifyPlayer'
         src={embedUrl} 
         style={{'borderRadius': '0px 0px 12px 12px' }}
         width="100%" height="80" 
@@ -31,35 +24,52 @@ const SpotifyTest = ({embedUrl}) => (
     </>
 )
 
-const SongCard = ({result, lat, lon}) => {
-    let embedUrl = result.WebPlayerUrl
-    .replace('https://open.spotify.com/track/', 'https://open.spotify.com/embed/track/')
-    .concat('?utm_source=generator');
-   
-    const styles = {
-        cardcontent: {
-          padding: 0,
-          "&:last-child": {
-            paddingBottom: 0
-          }
-        }
-      };
+function truncate(result) {
+    if (result.length > 40) {
+       return result.substring(0, 40) + '...';
+    }
+    return result;
+}
 
-    return (
+function printSpotify(embedUrl){
+    if (embedUrl!=="null"){
+       return (<SpotifyTest embedUrl={embedUrl}/>) 
+    }   
+    else{
+        return (<div className='spotifyNotFound' > 
+            
+            <p>Spotify not found</p>
+            
+            </div>)
+    }                            
+}
+
+const SongCard = ({result}) => {
+    let embedUrl= " "
+    //    console.log (embedUrl);
+    //    console.log (result.WebPlayerUrl);
+    
+    if (result.WebPlayerUrl.includes('track')){
+        embedUrl = result.WebPlayerUrl
+        .replace('https://open.spotify.com/track/', 'https://open.spotify.com/embed/track/')
+        .concat('?utm_source=generator');
+        }
+        else{
+            embedUrl= "null"
+        }
+   
+
+     return (
         
         <div className='Card'>
                 <Card sx={{borderRadius: '12px 12px 0px 0px' }} >
-                    <CardContent sx={{
-          padding: 0,
-          "&:last-child": {
-            paddingBottom: 0
-          }
+                    <CardContent sx={{padding: 0, "&:last-child": {paddingBottom: 0}
         }}>
                         <Box sx={{display: 'flex', flexDirection: 'row', textAlign:"start"}}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'start', width: 1 }}>
-                                <CardContent id="contentBox" sx={{ flex: '1 0 auto', paddingLeft: '5em', paddingTop: '2em'}}>
+                                <CardContent id="contentBox" sx={{ flex: '1 0 auto', paddingLeft: '3em', paddingTop: '2em'}}>
                                     <Typography component="div" variant="h4">
-                                    {result.Artist}
+                                    {truncate(result.Artist)}
                                     </Typography>
                                     <Typography variant="h6" color="text.secondary" component="div">
                                     {result.Track}
@@ -67,14 +77,9 @@ const SongCard = ({result, lat, lon}) => {
                                     <Typography variant="h6" color="text.secondary">
                                     {result.ReleaseYear}
                                     </Typography>
-                                    
-                                    {/* <CardActionArea sx={{ bottom: 0 }}>
-                                    <img className='SpotifyLogo' alt='spotifyLogo' src={process.env.PUBLIC_URL+ '/Resources/spotifyLogo.jpg'} width={'50'} onClick={() => setShowResults(!showResults)} ></img>
-                                    </CardActionArea>
-                                    */}
                                 </CardContent>   
                             </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', marginLeft: 'auto', pl: 1, pb: 1  }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', marginLeft: 'auto' }}>
                                 <CardContent sx={{ flex: '1 0 auto' }}>
                                     <CardMedia
                                         id="coverImage"
@@ -88,14 +93,11 @@ const SongCard = ({result, lat, lon}) => {
                             </Box>
                         </Box>
             
-                        {/* <div sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', pl: 1, pb: 1, width:1 }}>
-                            <CardContent sx={{paddingBottom: '0px' }}>
-                            </CardContent>
-                        </div> */}
+                      
                     </CardContent>
                 </Card>
-                                <SpotifyTest embedUrl={embedUrl}/> 
-                
+               
+               {printSpotify(embedUrl)}
             </div>
         
     )

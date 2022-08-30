@@ -45,8 +45,8 @@ const SpeechInput = () => {
     
     function success(pos) {
       let crd = pos.coords;
-      console.log(crd.latitude)
-      console.log(crd.longitude)
+      //console.log(crd.latitude)
+      //console.log(crd.longitude)
       setCoordinates({"lat":crd.latitude, "lon": crd.longitude})
     }
     
@@ -81,7 +81,7 @@ const SpeechInput = () => {
     setSearchButtonUrl("/resources/recordbutton.png")
     resetTranscript()
     startListening()
-    {console.log(listening? "Listening" : "Not listening")}
+    //{console.log(listening? "Listening" : "Not listening")}
   }
 
   //Stop listening, change button to default and call API with transcript value
@@ -89,8 +89,8 @@ const SpeechInput = () => {
     setSearchButtonUrl("/resources/searchbutton.png")
     SpeechRecognition.abortListening();
     fetchData(transcript);
-    console.log("Calling verse-api with: " +transcript);
-    {console.log(listening? "Listening" : "Not listening")}
+    // console.log("Calling verse-api with: " +transcript);
+    // {console.log(listening? "Listening" : "Not listening")}
   }
   
   //Handlers for locale options
@@ -111,7 +111,7 @@ const SpeechInput = () => {
 
   const handleManualInput = (event) => {
     setManualInput(event.target.value)
-    console.log(manualInput)
+    //console.log(manualInput)
   }
 
   const handleManualInputFetchData = (input) => {
