@@ -44,6 +44,18 @@ body{
 
 }
 
+.DialogBox{
+    background-color: #d3d8c5;
+    color: black;
+}
+#TextColorBlack{
+    color: black;
+}
+
+#TextColorPetrol{
+    color: #004a4f;
+}
+
 #fade-button{
     color: white;
 }
