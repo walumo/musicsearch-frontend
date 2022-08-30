@@ -162,8 +162,16 @@ const SpeechInput = () => {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}>
-
-              {language}
+                  
+              {language == "en-US"
+              ? "English"
+              : language == "fi-FI"
+              ? "Finnish"
+              : language == "sv-SE"
+              ? "Martti"
+              : ''
+              }
+                
 
             </Button>
             
@@ -182,6 +190,7 @@ const SpeechInput = () => {
               <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Martti</MenuItem>
             </Menu>
           </div>
+          
     </div>
   );
   
