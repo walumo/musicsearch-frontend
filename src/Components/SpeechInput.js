@@ -132,11 +132,17 @@ const SpeechInput = () => {
           console.error(err);
       }
     };
+  
+    const handleKeyPress = (event) => {
+      if(event.key === 'Enter'){
+        handleManualInputFetchData(manualInput)
+      }
+    }    
     
   return (
     <div>
       <div className='inputFieldWrapper'>
-        <input onChange={handleManualInput} className='searchInput' type="text" name="searchstring" placeholder={transcript} value={manualInput} />
+        <input onChange={handleManualInput} onKeyPress={handleKeyPress} className='searchInput' type="text" name="searchstring" placeholder={transcript} value={manualInput} />
         <button className='magnifierGlassButton' onClick={()=>handleManualInputFetchData(manualInput)}>
           <SearchIcon />
         </button>
