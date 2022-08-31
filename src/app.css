@@ -14,18 +14,3 @@
 #coverImage {
     width: 151px;
 }
-
-@media only screen and (max-device-width: 600px) {
-    #coverImage {
-        width: 100px;
-    }
-    
-    #contentBox {
-        padding: 2em 0em 0em 2em;
-    }
-
-    html
-     {
-        font-size: 10px;
-    }
-}

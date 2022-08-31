@@ -57,8 +57,8 @@ const Footer = ({language}) => {
 return (
           <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, height: '35px' }} elevation={3}>
             <BottomNavigation sx={{bgcolor: '#d3d8c5'}} showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }} >
-              <InfoDialog title={howToTitle} description1={howToDescription1} howToDescription2={howToDescription2} buttonText={howToButtonText} icon={<HelpOutlineIcon/>}/>
-              <InfoDialog title={aboutTitle} description1={aboutDescription1} description2={aboutDescription2} buttonText={aboutButtonText} icon={<InfoIcon/>}/>
+              <InfoDialog sx={{fontSize : "20px"}} title={howToTitle} description1={howToDescription1} howToDescription2={howToDescription2} buttonText={howToButtonText} icon={<HelpOutlineIcon sx={{ fontSize: "1em"}}/>}/>
+              <InfoDialog sx={{fontSize : "20px"}} title={aboutTitle} description1={aboutDescription1} description2={aboutDescription2} buttonText={aboutButtonText} icon={<InfoIcon sx={{ fontSize: "1em"}}/>}/>
             </BottomNavigation>
           </Paper>
       );

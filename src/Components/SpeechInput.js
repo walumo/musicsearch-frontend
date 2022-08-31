@@ -109,7 +109,6 @@ const SpeechInput = () => {
   function handleCloseChangeLocale(language){
       setAnchorEl("");
       setLanguage(language);
-      console.log("changed language to: " +language);
   }
 
   const handleManualInput = (event) => {
@@ -151,7 +150,7 @@ const SpeechInput = () => {
       <div className='inputFieldWrapper'>
         <input onChange={handleManualInput} onKeyPress={handleKeyPress} className='searchInput' type="text" name="searchstring" placeholder={transcript} value={manualInput} />
         <button className='magnifierGlassButton' onClick={()=>handleManualInputFetchData(manualInput)}>
-          <SearchIcon />
+          <SearchIcon className='SearchIcon' sx={{ fontSize: "2em"}}/>
         </button>
       </div>
       
@@ -192,9 +191,9 @@ const SpeechInput = () => {
               onClose={handleClose}
               TransitionComponent={Fade}>
 
-              <MenuItem onClick={()=>handleCloseChangeLocale("en-US")}>English</MenuItem>
-              <MenuItem onClick={()=>handleCloseChangeLocale("fi-FI")}>Suomi</MenuItem>
-              <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Svenska</MenuItem>
+              <MenuItem id="menuItem" onClick={()=>handleCloseChangeLocale("en-US")}>English</MenuItem>
+              <MenuItem id="menuItem" onClick={()=>handleCloseChangeLocale("fi-FI")}>Suomi</MenuItem>
+              <MenuItem id="menuItem" onClick={()=>handleCloseChangeLocale("sv-SE")}>Svenska</MenuItem>
             </Menu>
             <Footer language={language}/>
           </div>
