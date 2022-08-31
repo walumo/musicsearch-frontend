@@ -127,3 +127,7 @@ form{
     color: rgb(128, 128, 128);
     font-size: large;
 }
+
+.languageButton{
+    margin-bottom: 1em;
+}
