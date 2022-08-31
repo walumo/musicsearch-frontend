@@ -21,15 +21,14 @@ import { lineHeight } from '@mui/system';
 
 const Footer = () => {
   const [value, setValue] = React.useState(0);
+  
   return (
-
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, height: '35px' }} elevation={3}>
         <BottomNavigation sx={{bgcolor: '#d3d8c5'}} showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }} >
-          <InfoDialog title='About Verse' description='Verse is a great app greated by great minds. Great!' buttonText='INFO'/>
-          {/* <BottomNavigationAction label="Info" icon={<InfoIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} /> */}
+          <InfoDialog title='How to use' description1='Press the button to record your voice' description2='This is the second paragraph' buttonText='How to' icon={<HelpOutlineIcon/>}/>
+          <InfoDialog title='About Verse' description1='Verse is a great app greated by great minds. Great!' buttonText='About' icon={<InfoIcon/>}/>
         </BottomNavigation>
+        
       </Paper>
   );
 }
