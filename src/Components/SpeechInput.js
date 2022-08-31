@@ -161,10 +161,8 @@ const SpeechInput = () => {
       <ScaleLoader color="#ffffff" loading={loading} size={150} />
 
       <NoSearchResults noResults={noResults} language={language}/>
-      
-      <OutcomePage geniusResults={geniusResults} lat={coordinates.lat} lon={coordinates.lon}/>
-      
-      <div>
+
+      <div className='languageButton'>
             <Button
               id="fade-button"
               aria-controls={open ? 'fade-menu' : undefined}
@@ -180,11 +178,8 @@ const SpeechInput = () => {
               ? "Martti"
               : ''
               }
-                
 
             </Button>
-            
-
 
             <Menu
               id="fade-menu"
@@ -201,7 +196,7 @@ const SpeechInput = () => {
               <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Martti</MenuItem>
             </Menu>
           </div>
-          
+      <OutcomePage geniusResults={geniusResults} lat={coordinates.lat} lon={coordinates.lon}/>
     </div>
   );
   

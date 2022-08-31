@@ -5,11 +5,11 @@ const NoSearchResults = ({noResults, language}) => {
     let message;
 
     if (language === "en-US") {    
-        message = "Oops.. no results!"
+        message = "Oops... no results!"
     } else if (language === "fi-FI") {
-        message = "Oops.. ei tuloksia!"
+        message = "Oops... ei tuloksia!"
      } else if (language === "sv-SE") {
-        message = "Oops.. inga resultat!"
+        message = "Oops... inga resultat!"
     }
 
     const errorStyle = {
