@@ -18,6 +18,7 @@ const Footer = ({language}) => {
   let aboutDescription1;
   let aboutDescription2;
   let aboutButtonText;
+  let madeBy = 'Aada, Ilari, Jutta, Miikka H., Miikka S., Erkki';
 
   if (language === "en-US") {
     howToTitle = 'How to';
@@ -26,38 +27,37 @@ const Footer = ({language}) => {
     howToButtonText = 'How to'
 
     aboutTitle = 'About';
-    aboutDescription1 = 'Verse is a great app greated by great minds. Great!';
-    aboutDescription2 = 'This could be more text';
+    aboutDescription1 = 'Verse is made by:';
+    aboutDescription2 = madeBy;
     aboutButtonText = 'About';
-    
 
   } else if (language === "fi-FI") {
-    howToTitle = 'Käyttäminen';
-    howToDescription1 = 'Paina nauhoitusnappia';
-    howToDescription2 = 'Ja jotain lisää';
-    howToButtonText = 'Käyttäminen'
+    howToTitle = 'Näin käytät Verseä';
+    howToDescription1 = 'Versellä voit etsiä kappaleita sanoitusten perusteella. Voit käyttää puheentunnistusta tai kirjoittaa haun hakukenttään.';
+    howToDescription2 = 'Paina logoa aloittaaksesi ja lopettaaksesi puheen nauhoittaminen. Voit vaihtaa sovelluksen kieltä, jolloin myös puheentunnistuksen kieli vaihtuu.';
+    howToButtonText = 'Ohjeet'
 
     aboutTitle = 'Tietoa';
-    aboutDescription1 = 'Verse on hieno sovellus';
-    aboutDescription2 = 'Lisää tekstiä';
+    aboutDescription1 = 'Versen ovat kehittäneet';
+    aboutDescription2 = madeBy;
     aboutButtonText = 'Tietoa';
 
   } else if (language === "sv-SE") {
-    howToTitle = 'Instruktioner';
-    howToDescription1 = 'Tryck på knappen för att söka sångtexter';
-    howToDescription2 = 'Mera text';
+    howToTitle = 'Så här fungerar Verse';
+    howToDescription1 = 'Man kan använda Verse för att söka låter på grund av sångtexter. Man kan använda röstinmatning för att diktera text eller skriva in texten som används.';
+    howToDescription2 = 'Tryck bara Verse logon för att aktivera röstinmatning och trycka om för att stoppa. Du ser dina sökresultat inom kort. Du kan ändra appspråket, då ändras också röstinmatningsspråket.';
     howToButtonText = 'Instruktioner'
 
     aboutTitle = 'Om Verse';
-    aboutDescription1 = 'Verse är den bästa appen du har använt!';
-    aboutDescription2 = 'Lite mera text';
+    aboutDescription1 = 'Verse är tillverkad av ';
+    aboutDescription2 = madeBy;
     aboutButtonText = 'Om Verse';
   }
 
 return (
           <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, height: '35px' }} elevation={3}>
             <BottomNavigation sx={{bgcolor: '#d3d8c5'}} showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }} >
-              <InfoDialog sx={{fontSize : "20px"}} title={howToTitle} description1={howToDescription1} howToDescription2={howToDescription2} buttonText={howToButtonText} icon={<HelpOutlineIcon sx={{ fontSize: "1em"}}/>}/>
+              <InfoDialog sx={{fontSize : "20px"}} title={howToTitle} description1={howToDescription1} description2={howToDescription2} buttonText={howToButtonText} icon={<HelpOutlineIcon sx={{ fontSize: "1em"}}/>}/>
               <InfoDialog sx={{fontSize : "20px"}} title={aboutTitle} description1={aboutDescription1} description2={aboutDescription2} buttonText={aboutButtonText} icon={<InfoIcon sx={{ fontSize: "1em"}}/>}/>
             </BottomNavigation>
           </Paper>
