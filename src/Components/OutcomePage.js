@@ -16,14 +16,14 @@ const OutcomePage = ({geniusResults, lat, lon}) => {
           Longitude: String(lon)
       })
         .then(function (response) {
-          console.log(response);
+          //console.log(response);
         })
         .catch(function (error) {
           console.log(error);
         });
 
       } catch (error) {
-        console.log("Waiting for data...")
+        //console.log("Waiting for data...")
       }  
     }
   
@@ -33,7 +33,7 @@ const OutcomePage = ({geniusResults, lat, lon}) => {
         try {
           return (
             <>
-              {geniusResults.Result.map(result => <SongCard key={geniusResults.Result.indexOf(result)} result={result} lat={lat} lon={lon}/>)}
+              {geniusResults.Result.map(result => <SongCard key={geniusResults.Result.indexOf(result)} result={result}/>)}
             </>
           )
 

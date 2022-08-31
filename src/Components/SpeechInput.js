@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { ScaleLoader } from 'react-spinners';
 import SearchIcon from '@mui/icons-material/Search';
+import InfoDialog from './InfoDialog';
 
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
@@ -45,8 +46,8 @@ const SpeechInput = () => {
     
     function success(pos) {
       let crd = pos.coords;
-      console.log(crd.latitude)
-      console.log(crd.longitude)
+      //console.log(crd.latitude)
+      //console.log(crd.longitude)
       setCoordinates({"lat":crd.latitude, "lon": crd.longitude})
     }
     
@@ -81,7 +82,7 @@ const SpeechInput = () => {
     setSearchButtonUrl("/resources/recordbutton.png")
     resetTranscript()
     startListening()
-    {console.log(listening? "Listening" : "Not listening")}
+    //{console.log(listening? "Listening" : "Not listening")}
   }
 
   //Stop listening, change button to default and call API with transcript value
@@ -89,8 +90,8 @@ const SpeechInput = () => {
     setSearchButtonUrl("/resources/searchbutton.png")
     SpeechRecognition.abortListening();
     fetchData(transcript);
-    console.log("Calling verse-api with: " +transcript);
-    {console.log(listening? "Listening" : "Not listening")}
+    // console.log("Calling verse-api with: " +transcript);
+    // {console.log(listening? "Listening" : "Not listening")}
   }
   
   //Handlers for locale options
@@ -111,7 +112,7 @@ const SpeechInput = () => {
 
   const handleManualInput = (event) => {
     setManualInput(event.target.value)
-    console.log(manualInput)
+    //console.log(manualInput)
   }
 
   const handleManualInputFetchData = (input) => {
@@ -126,6 +127,10 @@ const SpeechInput = () => {
         setGeniusResults([]);
           setLoading(true);
           const result = await axios.get('https://verse-api.azurewebsites.net/Api/songs', { params: { q: queryString }});
+          if (result.data.Result.length == 0){
+            window.alert('Improve your searching skills and come back')
+            //<InfoDialog title='fail' description='Your search didnt found anything' buttonText=''/>
+          }
           setGeniusResults(result.data);
           setLoading(false);
       } catch (err) {
@@ -163,8 +168,16 @@ const SpeechInput = () => {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}>
-
-              {language}
+                  
+              {language == "en-US"
+              ? "English"
+              : language == "fi-FI"
+              ? "Finnish"
+              : language == "sv-SE"
+              ? "Martti"
+              : ''
+              }
+                
 
             </Button>
             
@@ -183,6 +196,7 @@ const SpeechInput = () => {
               <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Martti</MenuItem>
             </Menu>
           </div>
+          
     </div>
   );
   
