@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { ScaleLoader } from 'react-spinners';
 import SearchIcon from '@mui/icons-material/Search';
-import InfoDialog from './InfoDialog';
+import NoSearchResults from './NoSearchResults';
 
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
@@ -33,6 +33,7 @@ const SpeechInput = () => {
   const [geniusResults, setGeniusResults] = useState(0);
   const [loading, setLoading] = useState(false)
   const [manualInput, setManualInput] = useState("");
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(()=> {
 
@@ -125,11 +126,11 @@ const SpeechInput = () => {
   const fetchData = async (queryString) => {
       try {
         setGeniusResults([]);
+          setNoResults(false)
           setLoading(true);
           const result = await axios.get('https://verse-api.azurewebsites.net/Api/songs', { params: { q: queryString }});
           if (result.data.Result.length == 0){
-            window.alert('Improve your searching skills and come back')
-            //<InfoDialog title='fail' description='Your search didnt found anything' buttonText=''/>
+            setNoResults(true);
           }
           setGeniusResults(result.data);
           setLoading(false);
@@ -158,6 +159,8 @@ const SpeechInput = () => {
       </button>
 
       <ScaleLoader color="#ffffff" loading={loading} size={150} />
+
+      <NoSearchResults noResults={noResults} language={language}/>
       
       <OutcomePage geniusResults={geniusResults} lat={coordinates.lat} lon={coordinates.lon}/>
       
@@ -181,6 +184,8 @@ const SpeechInput = () => {
 
             </Button>
             
+
+
             <Menu
               id="fade-menu"
               MenuListProps={{
