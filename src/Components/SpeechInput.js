@@ -10,6 +10,9 @@ import Fade from '@mui/material/Fade';
 import { ScaleLoader } from 'react-spinners';
 import SearchIcon from '@mui/icons-material/Search';
 import InfoDialog from './InfoDialog';
+import Footer from './Footer';
+
+
 
 const SUBSCRIPTION_KEY = '53b4ab187c3d4fdc81515c0369724f3f';
 const REGION = 'northeurope';
@@ -172,10 +175,10 @@ const SpeechInput = () => {
               {language == "en-US"
               ? "English"
               : language == "fi-FI"
-              ? "Finnish"
+              ? "Suomi"
               : language == "sv-SE"
-              ? "Martti"
-              : ''
+              ? "Svenska"
+              : language
               }
                 
 
@@ -193,8 +196,9 @@ const SpeechInput = () => {
 
               <MenuItem onClick={()=>handleCloseChangeLocale("en-US")}>English</MenuItem>
               <MenuItem onClick={()=>handleCloseChangeLocale("fi-FI")}>Suomi</MenuItem>
-              <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Martti</MenuItem>
+              <MenuItem onClick={()=>handleCloseChangeLocale("sv-SE")}>Svenska</MenuItem>
             </Menu>
+            <Footer language={language}/>
           </div>
           
     </div>
