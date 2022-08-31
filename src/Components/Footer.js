@@ -25,7 +25,7 @@ const Footer = () => {
 
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, height: '35px' }} elevation={3}>
         <BottomNavigation sx={{bgcolor: '#d3d8c5'}} showLabels value={value} onChange={(event, newValue) => { setValue(newValue); }} >
-          <InfoDialog title='About Verse' description='Verse is a great app greated by great minds. Great!' buttonText='INFO'/>
+          <InfoDialog sx={{fontSize : "20px"}}title='About Verse' description='Verse is a great app greated by great minds. Great!' buttonText='INFO'/>
           {/* <BottomNavigationAction label="Info" icon={<InfoIcon />} />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} /> */}

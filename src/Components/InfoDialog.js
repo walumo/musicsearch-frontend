@@ -21,7 +21,7 @@ const InfoDialog = ({title, description, buttonText}) => {
     return (
     <div>
         <Button id='TextColorPetrol' color= "secondary" onClick={handleClickOpen}>
-            <HelpOutlineIcon/> 
+            <HelpOutlineIcon sx={{fontSize : "medium"}}/> 
             &nbsp;&nbsp;{buttonText}
             
         </Button>

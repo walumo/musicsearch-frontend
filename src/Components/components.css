@@ -9,9 +9,12 @@ padding:0px;
 }
 
 .magnifierGlassButton{
+    position: absolute;
     background: transparent;
     border: none;
     width: 10%;
+    right: 5px;
+    top: 1px;
 }
 
 
@@ -71,8 +74,6 @@ form{
     border: none;
     outline: none;
     flex-grow: 1;
-
-
 }
 
 .searchInput:focus{
@@ -81,10 +82,10 @@ form{
     border: none;
     outline: none;
     flex-grow: 1;
-
 }
 
 .inputFieldWrapper{
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -126,4 +127,124 @@ form{
     justify-content: center;
     color: rgb(128, 128, 128);
     font-size: large;
+}
+
+#fade-button{
+    font-size: small;
+
+}
+
+#menuItem{
+    font-size: small;
+
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    body {
+
+    }
+
+    #coverImage {
+        width: 100px;
+    }
+    
+    #contentBox {
+        padding: 2em 0em 0em 2em;
+    }
+
+    html
+     {
+        font-size: 10px;
+    }
+
+
+    .SearchImage
+{
+            width:150px;
+            height:150px;
+}
+
+.inputFieldWrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 3em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 5px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+}
+
+.magnifierGlassButton{
+    background: transparent;
+    border: none;
+}
+
+.SearchIcon {
+    width: 100px;
+    font-size: large;
+}
+
+.searchInput{
+    background: transparent;
+    border: none;
+    outline: none;
+    /* flex-grow: 0.2; */
+    font-size: large;
+    width: 80%;
+}
+
+.searchInput:focus{
+    background: transparent;
+    border: none;
+    outline: none;
+    /* flex-grow: 0.2; */
+    font-size: large;
+    width: 80%;
+
+
+}
+#fade-button{
+    font-size: medium;
+
+}
+
+#menuItem{
+    font-size: medium;
+
+}
+
+
+
+#alert-dialog-description{
+    font-size: medium;
+}
+#TextColorBlack{
+    font-size: medium;
+}
+#TextColorPetrol{
+    font-size: medium;
+}
+#alert-dialog-title{
+    font-size: medium;
+}
+
+
+    /* div#main {
+        font-size: 3vw;
+    } */
+
 }
