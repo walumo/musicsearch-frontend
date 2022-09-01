@@ -136,6 +136,24 @@ form{
 
 
 
+/* Mobile landscape */
+@media screen and (max-height: 400px) {
+    .SearchImage
+    {
+            width:100px;
+            height:100px;
+    }
+    #coverImage {
+        width: 100px;
+    }
+    #contentBox {
+        padding: 2em 0em 0em 2em;
+    }
+    html
+     {
+        font-size: small;
+    }
+}
 
 
 
