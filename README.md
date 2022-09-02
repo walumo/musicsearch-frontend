@@ -18,8 +18,10 @@ Verse lets users search songs and artists by snippets of song lyrics. This proje
 
 ## Features
 
-- React frontend
+- React frontend deployed on Netlify
 - Azure cognitive services API Speech-to-text
-- c# .NET core backend running on Azure cloud
-- Azure CosmosDB database for logging
-- Data collected from Genius API and Spotify API
+- c# .NET core backend running on Azure app service
+- Azure CosmosDB database for logging anonymous user data
+  - location (if permission granted)
+  - Top search result
+- Data collected from Genius API and Spotify API, parsed in backend
