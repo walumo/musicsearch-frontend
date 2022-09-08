@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import InfoDialog from "./InfoDialog";
 import BottomNavigation from '@mui/material/BottomNavigation';
 import InfoIcon from '@mui/icons-material/Info';
@@ -7,7 +7,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import './components.css'
 
 const Footer = ({language}) => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   
   let howToTitle;
   let howToDescription1;
