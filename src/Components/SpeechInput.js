@@ -128,7 +128,7 @@ const SpeechInput = () => {
         setGeniusResults([]);
           setNoResults(false)
           setLoading(true);
-          const result = await axios.get('https://localhost:44326/Api/songs', { params: { q: queryString }});
+          const result = await axios.get('https://localhost:5000/Api/songs', { params: { q: queryString }});
           if (result.data.Result.length === 0){
             setNoResults(true);
           }
